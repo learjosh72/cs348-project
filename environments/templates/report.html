@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h3>Filters (time frame or class):</h3>
+  <br/>
+  <form method="POST">
+                {{ timeform.hidden_tag() }}
+		<div class="row">
+			<div class="col">
+		{{ timeform.time1.label(class="form-label") }}
+                {{ timeform.time1(class="form-control") }}
+			</div>
+                	<div class="col">
+                {{ timeform.time2.label(class="form-label") }} 
+                {{ timeform.time2(class="form-control") }}
+			</div>
+		</div>
+			<br/>
+		{{ timeform.submit(class="btn btn-secondary")}}
+  </form>
+   <form method="POST">
+                {{ classform.hidden_tag() }}
+                {{ classform.classes.label(class="form-label") }}
+                {{ classform.classes(class="form-control") }}
+                <br/>
+                {{ classform.submit(class="btn btn-secondary")}}
+  </form>
+  <br/>
+  <br/>
+  <br/>
+  <table class="table table-hover table-bordered table-striped">
+	  <tr><td>Exam ID</td><td>Date and Time</td><td>Duration (mins)</td><td>Description</td><td>Professor</td><td>Class</td><td>Room</td><td>Offerings</td><td>Taking</td></tr>
+	  {% for exam in exams %}
+                <tr>
+			<td>{{exam.id}}</td><td>{{exam.datetime}}</td><td>{{exam.duration}}</td><td>{{exam.description}}</td><td>{{exam.name}}</td><td>{{exam.course_code}}</td><td>{{exam.building}} {{exam.number}}</td><td>{{exam.offered}}</td><td>{{exam.taking}}</td>
+                </tr>
+        {% endfor %}
+        </table>
+{% endblock %}

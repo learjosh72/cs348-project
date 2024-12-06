@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	{% if alarm %}
+		<div class="alert alert-primary" role="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  This Exam Is Full.
+</div>
+	{% endif %}
+	<h1>Select Exam ID To Confirm You Will Be Taking</h1>
+	<form method="POST">
+		{{ form.hidden_tag() }}
+		{{ form.exam_id.label(class="form-label") }}
+		{{ form.exam_id(class="form-control") }}
+		<br/>
+		{{ form.submit(class="btn btn-secondary")}}
+	</form>
+{% endblock%}

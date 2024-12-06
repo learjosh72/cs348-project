@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if name %}
+        <h1>Hello {{ name }}!!</h1>
+
+{% else %}
+        <h1>Add a Professor:</h1>
+        <br/>
+        <form method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control") }}
+                <br/>
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control") }}
+                <br/>
+                {{ form.submit(class="btn btn-secondary") }}
+        </form>
+
+        <br/><br/>
+	<h1>Remove a Professor:</h1>
+	<br/>
+        <form method="POST">
+                {{ form2.hidden_tag() }}
+                {{ form2.id_prof.label(class="form-label") }}
+                {{ form2.id_prof(class="form-control") }}
+                <br/>
+                {{ form2.submit(class="btn btn-secondary") }}
+        </form>
+	<br/><br/><br/>
+	<h1>Professor List:</h1>
+	<br/>
+        <table class="table table-hover table-bordered table-striped">
+		<tr><td>Professor ID</td><td>Professor Name</td><td>Professor Email</td></tr>
+        {% for our_prof in our_profs %}
+                <tr>
+                        <td>{{our_prof.id}}</td> <td>{{our_prof.name}}</td> <td>{{our_prof.email}}</td>
+                </tr>
+        {% endfor %}
+        </table>
+{% endif %}
+
+{% endblock %}

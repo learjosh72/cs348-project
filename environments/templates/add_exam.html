@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if name %}
+        <h1>Hello {{ name }}!!</h1>
+
+{% else %}
+        <h1>Add Exam:</h1>
+        <br/>
+        <form method="POST">
+                {{ form.hidden_tag() }}
+		{{ form.datetime.label(class="form-label") }}
+		{{ form.datetime(class="form-control") }}
+		<br/>
+                {{ form.duration.label(class="form-label") }}
+                {{ form.duration(class="form-control") }}
+                <br/>
+		{{ form.description.label(class="form-label") }}
+                {{ form.description(class="form-control") }}
+                <br/>
+		{{ form.professor_id.label(class="form-label") }}
+                {{ form.professor_id(class="form-control") }}
+                <br/>
+		{{ form.class_id.label(class="form-label") }}
+                {{ form.class_id(class="form-control") }}
+                <br/>
+		{{ form.room_id.label(class="form-label") }}
+                {{ form.room_id(class="form-control") }}
+                <br/>
+		{{ form.offered.label(class="form-label") }}
+                {{ form.offered(class="form-control") }}
+                <br/>
+                {{ form.submit(class="btn btn-secondary") }}
+        </form>
+
+<!--	<h1>Update Exam</h1>
+-->
+	<h1>Delete Exam:</h1>
+	<br/>
+	<form method="POST">
+		{{ form3.hidden_tag() }}
+		{{ form3.exam_id.label(class="form-label") }}
+		{{ form3.exam_id(class="form-control")}}
+		<br/>
+		{{ form3.submit(class="btn btn-secondary") }}
+	</form>
+
+{% endif %}
+
+{% endblock %}
