@@ -50,6 +50,7 @@ class Professors(db.Model):
         return '<Name %r>' % self.name
 
 class Room(db.Model):
+    __tablename_ = "Room"
     id = db.Column(db.Integer, primary_key=True)
     building = db.Column(db.String(200), nullable=False)
     number = db.Column(db.Integer)
@@ -282,6 +283,7 @@ def add_room():
         stmt2 = delete(Room).where(Room.id == form2.id_room.data)
         with engine.connect() as conn:
             result = conn.execute(stmt2)
+            conn.commit()
         form2.id_room.data = 0
     #profs = Professors.query.order_by(Professors.name)
     with engine.connect() as conn:
